@@ -104,14 +104,14 @@ freq(enade$qe_i8)
 freq(enade$cat)
 
 # gerando tabelas para LaTeX
-xtable(cbind(summary(enade$qe_i8)))
-stargazer(enade$nt_ger)
+#xtable(cbind(summary(enade$qe_i8)))
+#stargazer(enade$nt_ger)
 
 #######################################
 #modelos lineares
 
 modelo.geral <- lm(nt_ger~tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                    qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                     qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
                      qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
                      qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
                      qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
@@ -185,91 +185,91 @@ modelo.pedagogia <- lm(nt_ger~tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe
                        data=enade.qe, subset=co_grupo==pedagogia)
 
 # montando a tabela
-stargazer(modelo.geral, modelo.arquitetura, modelo.civil, modelo.computacao, modelo.cs_lic, 
-          modelo.historia, modelo.musica, modelo.pedagogia,
-          type = "text", no.space = T, omit.stat = c("ser", "f"),title = "Modelos de Regressão OLS",
-          column.labels = c("Geral","Arquitetura","Eng. Civil", "Computação", "Sociais(Lic)",
-                            "História(Lic)","Música(Lic)","Pedagogia(Lic)"),
-          dep.var.labels = "Nota Geral")
+#stargazer(modelo.geral, modelo.arquitetura, modelo.civil, modelo.computacao, modelo.cs_lic, 
+#          modelo.historia, modelo.musica, modelo.pedagogia,
+#          type = "text", no.space = T, omit.stat = c("ser", "f"),title = "Modelos de Regressão OLS",
+#          column.labels = c("Geral","Arquitetura","Eng. Civil", "Computação", "Sociais(Lic)",
+#                            "História(Lic)","Música(Lic)","Pedagogia(Lic)"),
+#          dep.var.labels = "Nota Geral")
 
 
 #################################################
 # Montando os modelos multinivel
 
 multi.geral <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                     qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                     qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                     qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                     qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                     qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                     qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                   data=enade.qe, REML = F)
+                            qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                            qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                            qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                            qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                            qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                            qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                          data=enade.qe, REML = F)
 #summary(multi.geral)
 
 
 
 multi.musica <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                      qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                      qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                      qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                      qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                      qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                      qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                    data=enade.qe, subset=co_grupo==musica, REML = F)
+                             qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                             qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                             qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                             qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                             qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                             qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                           data=enade.qe, subset=co_grupo==musica, REML = F)
 
 multi.arquitetura <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                           qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                           qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                           qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                           qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                           qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                           qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso, 
-                         data=enade.qe, subset=co_grupo==arquitetura, REML = F)
+                                  qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                                  qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                                  qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                                  qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                                  qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                                  qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso, 
+                                data=enade.qe, subset=co_grupo==arquitetura, REML = F)
 
 multi.cs_lic <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                      qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                      qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                      qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                      qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                      qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                      qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                    data=enade.qe, subset=co_grupo==cs_lic, REML = F)
+                             qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                             qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                             qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                             qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                             qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                             qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                           data=enade.qe, subset=co_grupo==cs_lic, REML = F)
 
 multi.civil <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                     qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                     qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                     qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                     qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                     qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                     qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                   data=enade.qe, subset=co_grupo==civil, REML = F)
+                            qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                            qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                            qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                            qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                            qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                            qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                          data=enade.qe, subset=co_grupo==civil, REML = F)
 
 multi.computacao <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                          qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                          qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                          qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                          qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                          qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                          qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                        data=enade.qe, subset=co_grupo==computacao, REML = F)
+                                 qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                                 qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                                 qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                                 qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                                 qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                                 qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                               data=enade.qe, subset=co_grupo==computacao, REML = F)
 
 multi.historia <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                        qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                        qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                        qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                        qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                        qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                        qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                      data=enade.qe, subset=co_grupo==historia, REML = F)
+                               qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                               qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                               qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                               qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                               qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                               qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                             data=enade.qe, subset=co_grupo==historia, REML = F)
 
 multi.pedagogia <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
-                         qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
-                         qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
-                         qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
-                         qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
-                         qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
-                         qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
-                       data=enade.qe, subset=co_grupo==pedagogia, REML = F)
+                                qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
+                                qe_i22+qe_i23+qe_i24+qe_i25+qe_i26+qe_i27+qe_i28+qe_i29+qe_i30+qe_i31+qe_i32+
+                                qe_i33+qe_i34+qe_i35+qe_i36+qe_i37+qe_i38+qe_i39+qe_i40+qe_i41+qe_i42+qe_i43+
+                                qe_i44+qe_i45+qe_i46+qe_i47+qe_i48+qe_i49+qe_i50+qe_i51+qe_i52+qe_i53+qe_i54+
+                                qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
+                                qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
+                              data=enade.qe, subset=co_grupo==pedagogia, REML = F)
 
 ###############################
 #plotando os interceptos aleatorios
@@ -291,9 +291,9 @@ rand(multi.musica)
 rand(multi.pedagogia)
 
 # montando as tabelas dos hlms
-stargazer(multi.geral, multi.arquitetura, multi.civil, multi.computacao, multi.cs_lic, 
-          multi.historia, multi.musica, multi.pedagogia,
-          type = "text", no.space = T, omit.stat = "ll",title = "Modelos de Regressão Multinível",
-          column.labels = c("Geral", "Arquitetura","Eng. Civil", "Computação", "Sociais(Lic)",
-                            "História(Lic)","Música(Lic)","Pedagogia(Lic)"),
-          dep.var.labels = "Nota Geral")
+#stargazer(multi.geral, multi.arquitetura, multi.civil, multi.computacao, multi.cs_lic, 
+#          multi.historia, multi.musica, multi.pedagogia,
+#          type = "text", no.space = T, omit.stat = "ll",title = "Modelos de Regressão Multinível",
+#          column.labels = c("Geral", "Arquitetura","Eng. Civil", "Computação", "Sociais(Lic)",
+#                            "História(Lic)","Música(Lic)","Pedagogia(Lic)"),
+#         dep.var.labels = "Nota Geral")
