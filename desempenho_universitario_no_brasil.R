@@ -3,9 +3,10 @@
 # Estudo sobre desigualdade educacional com dados do Enade 2014
 
 # Neylson Crepalde e Leonardo Silveira
+###########################################
 
 # Carregando os pacotes necessarios. Se der uma mensagem de erro, use 
-# install.packages("NOME-DO-PACOTE", dependencies=T) para cada um. Abs
+# install.packages("NOME-DO-PACOTE", dependencies=T) para cada um.
 library(car)
 library(ggplot2)
 library(lme4)
