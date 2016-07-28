@@ -205,7 +205,7 @@ multi.geral <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+
                             qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                           data=enade.qe, REML = F)
 #summary(multi.geral)
-
+ICC.geral = var(multi.geral@u) / (var(multi.geral@u)+var(residuals(multi.geral)))
 
 
 multi.musica <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
@@ -216,6 +216,7 @@ multi.musica <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3
                              qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                              qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                            data=enade.qe, subset=co_grupo==musica, REML = F)
+ICC.musica = var(multi.musica@u) / (var(multi.musica@u)+var(residuals(multi.musica)))
 
 multi.arquitetura <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
                                   qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
@@ -225,6 +226,7 @@ multi.arquitetura <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+
                                   qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                                   qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso, 
                                 data=enade.qe, subset=co_grupo==arquitetura, REML = F)
+ICC.arquitetura = var(multi.arquitetura@u) / (var(multi.arquitetura@u)+var(residuals(multi.arquitetura)))
 
 multi.cs_lic <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
                              qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
@@ -234,6 +236,7 @@ multi.cs_lic <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3
                              qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                              qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                            data=enade.qe, subset=co_grupo==cs_lic, REML = F)
+ICC.cs_lic = var(multi.cs_lic@u) / (var(multi.cs_lic@u)+var(residuals(multi.cs_lic)))
 
 multi.civil <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
                             qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
@@ -243,6 +246,7 @@ multi.civil <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+
                             qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                             qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                           data=enade.qe, subset=co_grupo==civil, REML = F)
+ICC.civil = var(multi.civil@u) / (var(multi.civil@u)+var(residuals(multi.civil)))
 
 multi.computacao <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
                                  qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
@@ -252,6 +256,7 @@ multi.computacao <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+q
                                  qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                                  qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                                data=enade.qe, subset=co_grupo==computacao, REML = F)
+ICC.computacao = var(multi.computacao@u) / (var(multi.computacao@u)+var(residuals(multi.computacao)))
 
 multi.historia <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
                                qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
@@ -261,6 +266,7 @@ multi.historia <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_
                                qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                                qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                              data=enade.qe, subset=co_grupo==historia, REML = F)
+ICC.historia = var(multi.historia@u) / (var(multi.historia@u)+var(residuals(multi.historia)))
 
 multi.pedagogia <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe_i3+qe_i4+qe_i5+qe_i6+qe_i7+qe_i9+qe_i10+
                                 qe_i11+qe_i12+qe_i13+qe_i14+qe_i15+qe_i16+qe_i17+qe_i18+qe_i19+qe_i20+qe_i21+
@@ -270,8 +276,16 @@ multi.pedagogia <- lme4::lmer(nt_ger~(1|co_ies)+tp_sexo+qe_i2+qe_i8+cat+qe_i1+qe
                                 qe_i55+qe_i56+qe_i57+qe_i58+qe_i59+qe_i60+qe_i61+qe_i62+qe_i63+qe_i64+qe_i65+
                                 qe_i66+qe_i67+qe_i68+idade.cent+co_regiao_curso,
                               data=enade.qe, subset=co_grupo==pedagogia, REML = F)
+ICC.pedagogia = var(multi.pedagogia@u) / (var(multi.pedagogia@u)+var(residuals(multi.pedagogia)))
 
 ###############################
+#plotando os ICC's
+ICC = c(ICC.geral, ICC.arquitetura, ICC.civil, ICC.computacao,
+        ICC.cs_lic, ICC.historia, ICC.musica, ICC.pedagogia)
+ggplot(data=NULL, aes(x = ICC , y = c("Geral","Arquitetura","Civil","Computação","Ciências Sociais",
+                                      "História","Música","Pedagogia")))+geom_point(size=2)+
+  labs(x="ICC's",y="")+theme_light()
+
 #plotando os interceptos aleatorios
 plotREsim(REsim(multi.arquitetura))+labs(title="Arquitetura")+theme_bw(base_size = 20)
 plotREsim(REsim(multi.civil))+labs(title="Eng. Civil")+theme_bw(base_size = 20)
