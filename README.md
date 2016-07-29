@@ -1,6 +1,6 @@
 #Enade
 
-Este respositório contem arquivos referentes ao artigo **DESEMPENHO UNIVERSITÁRIO NO BRASIL: Estudo sobre desigualdade educacional com dados do Enade 2014** de (Neylson Crepalde)[https://www.facebook.com/neylson.crepalde] e (Leonardo Silveira)[https://www.facebook.com/leonardo.silveira.7505].
+Este respositório contem arquivos referentes ao artigo **DESEMPENHO UNIVERSITÁRIO NO BRASIL: Estudo sobre desigualdade educacional com dados do Enade 2014** de [Neylson Crepalde](https://www.facebook.com/neylson.crepalde) e [Leonardo Silveira](https://www.facebook.com/leonardo.silveira.7505).
 
 O arquivo **desempenho_universitario_no_brasil.R** contém o código utilizado para produzir os gráficos e análises do artigo.
 
