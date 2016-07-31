@@ -16,12 +16,14 @@ library(lmtest)
 library(stargazer)
 library(xtable)
 library(descr)
+library(data.table)
+library(bit64)
 
 ########################
 # Lendo os dados
 # Baixe os microdados do Enade 2014 em http://portal.inep.gov.br/basica-levantamentos-acessar
 # Coloque o arquivo microdados_enade_2014.csv na pasta Documentos
-enade <- read.csv("microdados_enade_2014.csv", sep = ";", stringsAsFactors = T, na.strings = "")
+enade <- as.data.frame(fread("microdados_enade_2014.csv", sep = ";", stringsAsFactors = T, na.strings=""))
 
 # Variavel dependente
 attach(enade)
